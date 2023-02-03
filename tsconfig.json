@@ -6,7 +6,6 @@
     "lib": [
       "DOM",
     ],
-    "skipLibCheck": true,
   },
   "include": [
     "src/**/*.ts",

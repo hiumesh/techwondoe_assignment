@@ -1,4 +1,3 @@
-import React = require('react');
 import {UserTypes} from '../types/user';
 
 export const download = function (data: string) {
