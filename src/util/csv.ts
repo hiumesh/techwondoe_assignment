@@ -1,4 +1,6 @@
+import React = require('react');
 import {UserTypes} from '../types/user';
+
 export const download = function (data: string) {
   const blob = new Blob([data], {type: 'text/csv'});
   const url = window.URL.createObjectURL(blob);
