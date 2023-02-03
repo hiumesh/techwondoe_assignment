@@ -1,5 +1,5 @@
-import { FormEventHandler, FunctionComponent } from "react";
-import { UserTypes } from "../types/user";
+import React, {FormEventHandler, FunctionComponent} from 'react';
+import {UserTypes} from '../types/user';
 interface UserFormProps {
   user: UserTypes | null;
   onSubmit: FormEventHandler<HTMLFormElement>;
@@ -24,7 +24,7 @@ const UserForm: FunctionComponent<UserFormProps> = ({
           type="text"
           id="id"
           name="id"
-          defaultValue={user ? user.id : ""}
+          defaultValue={user ? user.id : ''}
           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
           placeholder="ID"
         />
@@ -40,7 +40,7 @@ const UserForm: FunctionComponent<UserFormProps> = ({
           type="text"
           id="name"
           name="name"
-          defaultValue={user ? user.name : ""}
+          defaultValue={user ? user.name : ''}
           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
           placeholder="John"
           required
@@ -76,7 +76,7 @@ const UserForm: FunctionComponent<UserFormProps> = ({
           type="text"
           id="role"
           name="role"
-          defaultValue={user ? user.role : ""}
+          defaultValue={user ? user.role : ''}
           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
           placeholder="Manager"
           required

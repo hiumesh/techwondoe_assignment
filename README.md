@@ -1,10 +1,25 @@
-# Getting Started with Create React App
+# Hi,
+My name is **Umesh Chandra Dani** currently a student.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The purpose of this project is to complete an assignment given by Techwondoe. Right now, the project have only one page i.e user setting page. 
+
+User Setting Page Description:
+  - User can see the list of users in a tabular format.
+  - Table have the following columns:
+    - Name, Email, Profile pic
+    - Status
+    - Role
+    - Last Login Date
+  - User can also create, delete and edit the users.
+  - Create, Edit and Delete functions will effect only on client side.
+  - On Delete user will be taken to confirmation modal.
+  - Create and Edit forms will also be inside modal.
+  - User can also download the users data in CSV format
+
 
 ## Available Scripts
 
-In the project directory, you can run:
+By using the following scripts user can interact with projects
 
 ### `npm start`
 

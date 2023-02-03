@@ -1,8 +1,6 @@
-import { FunctionComponent } from "react";
+import React, {FunctionComponent} from 'react';
 
-interface TableSkeletonProps {}
-
-const TableSkeleton: FunctionComponent<TableSkeletonProps> = () => {
+const TableSkeleton: FunctionComponent = () => {
   return (
     <div
       role="status"

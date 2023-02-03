@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { QueryClientProvider, QueryClient } from 'react-query';
+import {QueryClientProvider, QueryClient} from 'react-query';
 import './index.css';
 import App from './App';
 import CompanySetting from './pages/company_setting';
 import User from './components/user';
 import ErrorPage from './components/error_page';
 import reportWebVitals from './reportWebVitals';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import {createBrowserRouter, RouterProvider} from 'react-router-dom';
 
 const queryClient = new QueryClient();
 
@@ -16,9 +16,9 @@ const root = ReactDOM.createRoot(
 );
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: '/',
     element: <App />,
-    errorElement: <ErrorPage />
+    errorElement: <ErrorPage />,
   },
   {
     path: '/company-settings',
@@ -29,15 +29,14 @@ const router = createBrowserRouter([
         path: '/company-settings/user',
         element: <User />,
       },
-    ]
-  }
+    ],
+  },
 ]);
 root.render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
       <RouterProvider router={router} />
     </QueryClientProvider>
-    
   </React.StrictMode>
 );
 

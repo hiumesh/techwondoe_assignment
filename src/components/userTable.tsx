@@ -3,21 +3,21 @@ import React, {
   FunctionComponent,
   SetStateAction,
   useMemo,
-} from "react";
+} from 'react';
 import {
   Column,
   useTable,
   useSortBy,
   usePagination,
   useFlexLayout,
-} from "react-table";
+} from 'react-table';
 
-import Tag from "./UI/tag";
-import { UserTypes } from "../types/user";
-import Button from "./UI/button";
+import Tag from './UI/tag';
+import {UserTypes} from '../types/user';
+import Button from './UI/button';
 
 interface UserTableProps {
-  users: { loading: boolean; data: UserTypes[] };
+  users: {loading: boolean; data: UserTypes[]};
   updateForm: Dispatch<
     SetStateAction<{
       visible: boolean;
@@ -41,9 +41,9 @@ const UserTable: FunctionComponent<UserTableProps> = ({
   const columns: readonly Column[] = useMemo(
     () => [
       {
-        Header: "Name",
-        accessor: "name",
-        Cell: (cel) => {
+        Header: 'Name',
+        accessor: 'name',
+        Cell: cel => {
           const rowData = cel.row.original as UserTypes;
           return (
             <div className="flex items-center">
@@ -69,10 +69,10 @@ const UserTable: FunctionComponent<UserTableProps> = ({
         width: 900,
       },
       {
-        Header: "Status",
-        accessor: "status",
-        Cell: (cel) =>
-          cel.value === "ACTIVE" ? (
+        Header: 'Status',
+        accessor: 'status',
+        Cell: cel =>
+          cel.value === 'ACTIVE' ? (
             <Tag color="green" dot={true} text={cel.value} />
           ) : (
             <Tag color="purple" dot={true} text={cel.value} />
@@ -80,28 +80,28 @@ const UserTable: FunctionComponent<UserTableProps> = ({
         width: 150,
       },
       {
-        Header: "Role",
-        accessor: "role",
-        Cell: (cel) => <div className="text-gray-500">{cel.value}</div>,
+        Header: 'Role',
+        accessor: 'role',
+        Cell: cel => <div className="text-gray-500">{cel.value}</div>,
         maxWidth: 150,
         minWidth: 150,
       },
       {
-        Header: "Last Login",
-        accessor: "lastLogin",
-        Cell: (cel) => {
+        Header: 'Last Login',
+        accessor: 'lastLogin',
+        Cell: cel => {
           return (
             <div className="flex flex-col">
               <span className="font-medium">
-                {new Date(cel.value).toLocaleDateString("en-US", {
-                  month: "short",
-                  day: "numeric",
-                  year: "numeric",
+                {new Date(cel.value).toLocaleDateString('en-US', {
+                  month: 'short',
+                  day: 'numeric',
+                  year: 'numeric',
                 })}
               </span>
               <span className="text-gray-500 text-sm">
-                {new Date(cel.value).toLocaleTimeString("en-US", {
-                  timeStyle: "short",
+                {new Date(cel.value).toLocaleTimeString('en-US', {
+                  timeStyle: 'short',
                 })}
               </span>
             </div>
@@ -110,9 +110,9 @@ const UserTable: FunctionComponent<UserTableProps> = ({
         width: 150,
       },
       {
-        accessor: "id",
+        accessor: 'id',
         disableSortBy: true,
-        Cell: (cel) => (
+        Cell: cel => (
           <div className="flex justify-center items-center">
             <div
               className="p-3 rounded-md hover:bg-blue-100"
@@ -137,9 +137,9 @@ const UserTable: FunctionComponent<UserTableProps> = ({
             </div>
             <div
               className="p-3 rounded-md hover:bg-blue-100"
-              onClick={(e) => {
+              onClick={e => {
                 e.preventDefault();
-                updateForm((prev) => ({
+                updateForm(prev => ({
                   ...prev,
                   visible: true,
                   user: cel.row.original as UserTypes,
@@ -151,8 +151,8 @@ const UserTable: FunctionComponent<UserTableProps> = ({
                 className="w-4 h-4 fill-gray-600"
                 viewBox="0 0 16 16"
               >
-                {" "}
-                <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z" />{" "}
+                {' '}
+                <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z" />{' '}
               </svg>
             </div>
           </div>
@@ -176,9 +176,9 @@ const UserTable: FunctionComponent<UserTableProps> = ({
     gotoPage,
     nextPage,
     previousPage,
-    state: { pageIndex },
+    state: {pageIndex},
   } = useTable(
-    { columns, data: users.data || [], initialState: { pageSize: 9 } },
+    {columns, data: users.data || [], initialState: {pageSize: 9}},
     useSortBy,
     usePagination,
     useFlexLayout
@@ -188,14 +188,14 @@ const UserTable: FunctionComponent<UserTableProps> = ({
       <div className="max-w-full overflow-x-auto">
         <table {...getTableProps()} className="w-full border-y">
           <thead>
-            {headerGroups.map((headerGroup) => (
+            {headerGroups.map(headerGroup => (
               <tr {...headerGroup.getHeaderGroupProps()}>
-                {headerGroup.headers.map((column) => (
+                {headerGroup.headers.map(column => (
                   <th
                     {...column.getHeaderProps(column.getSortByToggleProps())}
                     className="text-left p-3 text-gray-600 text-sm font-normal flex items-center"
                   >
-                    {column.render("Header")}
+                    {column.render('Header')}
                     <span className="ml-2">
                       {column?.isSorted ? (
                         column?.isSortedDesc ? (
@@ -204,7 +204,9 @@ const UserTable: FunctionComponent<UserTableProps> = ({
                           <>&#129137;</>
                         )
                       ) : (
-                        (column.Header === "Name" || column.Header === "Role" || column.Header === "Last Login") && (
+                        (column.Header === 'Name' ||
+                          column.Header === 'Role' ||
+                          column.Header === 'Last Login') && (
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             className="fill-gray-500 w-3 h-3"
@@ -221,17 +223,17 @@ const UserTable: FunctionComponent<UserTableProps> = ({
             ))}
           </thead>
           <tbody {...getTableBodyProps()}>
-            {page.map((row) => {
+            {page.map(row => {
               prepareRow(row);
               return (
                 <tr
                   {...row.getRowProps()}
                   className="even:bg-gray-50 hover:bg-slate-100"
                 >
-                  {row.cells.map((cell) => {
+                  {row.cells.map(cell => {
                     return (
                       <td {...cell.getCellProps()} className="p-3">
-                        {cell.render("Cell")}
+                        {cell.render('Cell')}
                       </td>
                     );
                   })}
@@ -244,7 +246,7 @@ const UserTable: FunctionComponent<UserTableProps> = ({
 
       <div className="flex justify-between p-3">
         <Button
-          type={canPreviousPage ? "borderd" : "disabled"}
+          type={canPreviousPage ? 'borderd' : 'disabled'}
           onClick={() => previousPage()}
         >
           &#129128; Previous
@@ -253,7 +255,7 @@ const UserTable: FunctionComponent<UserTableProps> = ({
           {new Array(pageCount).fill(0).map((_, idx) => (
             <Button
               key={idx}
-              type={idx === pageIndex ? "primary" : "borderd"}
+              type={idx === pageIndex ? 'primary' : 'borderd'}
               onClick={() => gotoPage(idx)}
             >
               {idx + 1}
@@ -261,7 +263,7 @@ const UserTable: FunctionComponent<UserTableProps> = ({
           ))}
         </div>
         <Button
-          type={canNextPage ? "borderd" : "disabled"}
+          type={canNextPage ? 'borderd' : 'disabled'}
           onClick={() => nextPage()}
         >
           Next &#129130;

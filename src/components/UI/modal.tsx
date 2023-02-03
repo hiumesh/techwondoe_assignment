@@ -1,23 +1,37 @@
-import { FunctionComponent, ReactNode } from "react";
-import Button from "./button";
-
+import React, {FunctionComponent, ReactNode} from 'react';
+import Button from './button';
 
 interface ModalProps {
-  visible: boolean,
-  onClose: VoidFunction,
-  children: ReactNode,
-  title: string,
-  okText?: string,
-  cancelText?: string,
-  onOk: VoidFunction,
-  onCancel?: VoidFunction,
-  okProps?: Object,
-  okButtonColor?: "green" | "red",
+  visible: boolean;
+  onClose: VoidFunction;
+  children: ReactNode;
+  title: string;
+  okText?: string;
+  cancelText?: string;
+  onOk: VoidFunction;
+  onCancel?: VoidFunction;
+  okProps?: Object;
+  okButtonColor?: 'green' | 'red';
 }
 
-const Modal: FunctionComponent<ModalProps> = ({visible, title, onClose, okText="Ok", cancelText="Cancel", onOk, onCancel=onClose, children, okProps={}, okButtonColor="green"}) => {
+const Modal: FunctionComponent<ModalProps> = ({
+  visible,
+  title,
+  onClose,
+  okText = 'Ok',
+  cancelText = 'Cancel',
+  onOk,
+  onCancel = onClose,
+  children,
+  okProps = {},
+  okButtonColor = 'green',
+}) => {
   return (
-    <div className={`fixed top-0 left-0 w-screen h-screen flex justify-center items-center ${visible ? "" : "hidden"}`}>
+    <div
+      className={`fixed top-0 left-0 w-screen h-screen flex justify-center items-center ${
+        visible ? '' : 'hidden'
+      }`}
+    >
       <div className="absolute top-0 left-0 w-full h-full opacity-30 bg-black"></div>
       <div className="bg-white rounded-lg shadow z-10">
         <div className="flex items-start justify-between p-4 border-b rounded-t">
@@ -44,22 +58,13 @@ const Modal: FunctionComponent<ModalProps> = ({visible, title, onClose, okText="
           </button>
         </div>
 
-        <div className="p-6 space-y-6">
-          {children}
-        </div>
+        <div className="p-6 space-y-6">{children}</div>
 
         <div className="flex items-center p-6 space-x-2 border-t border-gray-200 rounded-b">
-          <Button
-            type={okButtonColor}
-            onClick={onOk}
-            buttonProps={okProps}
-          >
+          <Button type={okButtonColor} onClick={onOk} buttonProps={okProps}>
             {okText}
           </Button>
-          <Button
-            type="borderd"
-            onClick={onCancel}
-          >
+          <Button type="borderd" onClick={onCancel}>
             {cancelText}
           </Button>
         </div>
