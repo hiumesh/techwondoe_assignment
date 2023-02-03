@@ -25,10 +25,12 @@ interface UserTableProps {
       user: UserTypes | null;
     }>
   >;
-  setDeleteUserConfirmModal: Dispatch<React.SetStateAction<{
-    visible: boolean;
-    user: UserTypes | null;
-}>>,
+  setDeleteUserConfirmModal: Dispatch<
+    React.SetStateAction<{
+      visible: boolean;
+      user: UserTypes | null;
+    }>
+  >;
 }
 
 const UserTable: FunctionComponent<UserTableProps> = ({
@@ -109,10 +111,18 @@ const UserTable: FunctionComponent<UserTableProps> = ({
       },
       {
         accessor: "id",
-        enableSorting: false,
+        disableSortBy: true,
         Cell: (cel) => (
           <div className="flex justify-center items-center">
-            <div className="p-3 rounded-md hover:bg-blue-100" onClick={() => setDeleteUserConfirmModal({ visible: true, user: cel.row.original as UserTypes })}>
+            <div
+              className="p-3 rounded-md hover:bg-blue-100"
+              onClick={() =>
+                setDeleteUserConfirmModal({
+                  visible: true,
+                  user: cel.row.original as UserTypes,
+                })
+              }
+            >
               <svg className="w-5 h-5" viewBox="0 0 20 20">
                 <path
                   className="fill-red-600"
@@ -133,10 +143,8 @@ const UserTable: FunctionComponent<UserTableProps> = ({
                   ...prev,
                   visible: true,
                   user: cel.row.original as UserTypes,
-                }))
-              }
-                
-              }
+                }));
+              }}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -168,9 +176,9 @@ const UserTable: FunctionComponent<UserTableProps> = ({
     gotoPage,
     nextPage,
     previousPage,
-    state:{ pageIndex }
+    state: { pageIndex },
   } = useTable(
-    { columns, data: (users.data || []), initialState: { pageSize: 9 } },
+    { columns, data: users.data || [], initialState: { pageSize: 9 } },
     useSortBy,
     usePagination,
     useFlexLayout
@@ -185,7 +193,7 @@ const UserTable: FunctionComponent<UserTableProps> = ({
                 {headerGroup.headers.map((column) => (
                   <th
                     {...column.getHeaderProps(column.getSortByToggleProps())}
-                    className="text-left p-3 text-gray-600 text-sm font-normal"
+                    className="text-left p-3 text-gray-600 text-sm font-normal flex items-center"
                   >
                     {column.render("Header")}
                     <span className="ml-2">
@@ -196,7 +204,15 @@ const UserTable: FunctionComponent<UserTableProps> = ({
                           <>&#129137;</>
                         )
                       ) : (
-                        ""
+                        (column.Header === "Name" || column.Header === "Role" || column.Header === "Last Login") && (
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="fill-gray-500 w-3 h-3"
+                            viewBox="0 0 16 16"
+                          >
+                            <path d="M1.5 1.5A.5.5 0 0 1 2 1h12a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.128.334L10 8.692V13.5a.5.5 0 0 1-.342.474l-3 1A.5.5 0 0 1 6 14.5V8.692L1.628 3.834A.5.5 0 0 1 1.5 3.5v-2zm1 .5v1.308l4.372 4.858A.5.5 0 0 1 7 8.5v5.306l2-.666V8.5a.5.5 0 0 1 .128-.334L13.5 3.308V2h-11z" />
+                          </svg>
+                        )
                       )}
                     </span>
                   </th>
