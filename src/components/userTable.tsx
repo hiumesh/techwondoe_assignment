@@ -161,11 +161,14 @@ const UserTable: FunctionComponent<UserTableProps> = ({
     getTableBodyProps,
     headerGroups,
     page,
+    canNextPage,
+    canPreviousPage,
     prepareRow,
     pageCount,
     gotoPage,
     nextPage,
     previousPage,
+    state:{ pageIndex }
   } = useTable(
     { columns, data: (users.data || []), initialState: { pageSize: 9 } },
     useSortBy,
@@ -225,7 +228,7 @@ const UserTable: FunctionComponent<UserTableProps> = ({
 
       <div className="flex justify-between p-3">
         <Button
-          type="borderd"
+          type={canPreviousPage ? "borderd" : "disabled"}
           onClick={() => previousPage()}
         >
           &#129128; Previous
@@ -234,7 +237,7 @@ const UserTable: FunctionComponent<UserTableProps> = ({
           {new Array(pageCount).fill(0).map((_, idx) => (
             <Button
               key={idx}
-              type="borderd"
+              type={idx === pageIndex ? "primary" : "borderd"}
               onClick={() => gotoPage(idx)}
             >
               {idx + 1}
@@ -242,7 +245,7 @@ const UserTable: FunctionComponent<UserTableProps> = ({
           ))}
         </div>
         <Button
-          type="borderd"
+          type={canNextPage ? "borderd" : "disabled"}
           onClick={() => nextPage()}
         >
           Next &#129130;

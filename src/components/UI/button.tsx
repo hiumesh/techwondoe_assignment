@@ -1,7 +1,7 @@
 import { FunctionComponent, MouseEventHandler, ReactNode } from "react";
 
 interface ButtonProps {
-  type?: "primary" | "borderd" | "green" | "red";
+  type?: "primary" | "borderd" | "green" | "red" | "disabled";
   onClick: MouseEventHandler;
   children: ReactNode;
   Icon?: ReactNode;
@@ -37,7 +37,19 @@ const Button: FunctionComponent<ButtonProps> = ({
         {children}
       </button>
     );
-  }else if (type === "red") {
+  } else if (type === "disabled") {
+    return (
+      <button
+        className="border shadow-sm rounded-md px-3 py-2 mr-3 text-sm font-medium text-white bg-gray-100 cursor-not-allowed flex items-center"
+        onClick={onClick}
+        disabled
+        {...buttonProps}
+      >
+        {Icon}
+        {children}
+      </button>
+    );
+  } else if (type === "red") {
     return (
       <button
         className="border shadow-sm rounded-md px-3 py-2 mr-3 text-sm font-medium text-white bg-red-600 flex items-center"
