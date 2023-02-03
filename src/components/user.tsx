@@ -128,7 +128,7 @@ const User: FunctionComponent = () => {
               Icon={
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="w-5 h-5 fill-gray-600 mr-2"
+                  className="w-5 h-5 fill-gray-600 mr-2 hidden sm:block"
                   viewBox="0 0 16 16"
                 >
                   {' '}
@@ -145,7 +145,7 @@ const User: FunctionComponent = () => {
               Icon={
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="w-6 h-6 fill-white"
+                  className="w-6 h-6 fill-white hidden sm:block"
                   viewBox="0 0 16 16"
                 >
                   {' '}

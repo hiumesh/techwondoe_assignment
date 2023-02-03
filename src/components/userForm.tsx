@@ -12,7 +12,7 @@ const UserForm: FunctionComponent<UserFormProps> = ({
   formId,
 }) => {
   return (
-    <form className="w-[400px]" onSubmit={onSubmit} id={formId}>
+    <form className="w-full sm:w-[400px]" onSubmit={onSubmit} id={formId}>
       <div className="mb-5 hidden">
         <label
           htmlFor="id"

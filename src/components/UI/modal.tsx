@@ -33,7 +33,7 @@ const Modal: FunctionComponent<ModalProps> = ({
       }`}
     >
       <div className="absolute top-0 left-0 w-full h-full opacity-30 bg-black"></div>
-      <div className="bg-white rounded-lg shadow z-10">
+      <div className="bg-white rounded-lg shadow z-10 m-3 w-full sm:w-auto">
         <div className="flex items-start justify-between p-4 border-b rounded-t">
           <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
             {title}
